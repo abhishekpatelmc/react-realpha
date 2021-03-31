@@ -1,23 +1,19 @@
 import logo from "../../asset/company-logo.png";
 import { Form, Button, Col } from "react-bootstrap";
 import "../signup/signup.css";
-import { useState, createRef, useRef, useEffect } from "react";
+import { useState } from "react";
 
 const Signup = () => {
   const [firstName, setFirstName] = useState("");
   const [isValid, setIsValid] = useState(false);
 
-  useEffect(() => {});
-  const tex = useRef();
-
-  const focusHandler = () => {
-    tex.current.focus();
-  };
   const handleChange = (e) => {
     setFirstName(e.target.value);
     // console.log(e.target.value);
-    if (!isNaN(firstName)) {
+    if (firstName.match(/^[a-zA-Z]*$/) == null) {
       setIsValid(true);
+    } else {
+      setIsValid(false);
     }
   };
 
@@ -34,8 +30,6 @@ const Signup = () => {
         <Form.Row>
           <Form.Group as={Col} className="col-md-6">
             <Form.Control
-              ref={tex}
-              onClick={focusHandler}
               onChange={handleChange}
               value={firstName}
               type="text"
