@@ -1,7 +1,7 @@
 import logo from "../../asset/company-logo.png";
 import { Form, Button, Col } from "react-bootstrap";
 import "../signup/signup.css";
-import { useState, createRef, useRef, useEffect } from "react";
+import { useState, useEffect } from "react";
 import validator from "validator";
 
 const Signup = () => {
