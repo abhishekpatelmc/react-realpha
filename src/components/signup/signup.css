@@ -16,7 +16,9 @@
 }
 .form-control {
   border-radius: 10px !important;
-  background-color: #f4f6f5 !important;
+}
+.form-control:focus {
+  box-shadow: none !important;
 }
 .btn {
   border-radius: 10px !important;
@@ -45,4 +47,15 @@ i {
   float: left;
   margin: 5px 15px 0 5px;
   font-size: 19px;
+}
+
+/* validation */
+.error-css {
+  border-color: rgba(255, 0, 0, 0.8) !important;
+  /* box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6) !important; */
+  /* outline: 0 none !important; */
+}
+.error-css:focus {
+  border-color: rgba(255, 0, 0, 0.8) !important;
+  /* box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6) !important; */
 }

@@ -1,8 +1,26 @@
 import logo from "../../asset/company-logo.png";
 import { Form, Button, Col } from "react-bootstrap";
 import "../signup/signup.css";
+import { useState, createRef, useRef, useEffect } from "react";
 
 const Signup = () => {
+  const [firstName, setFirstName] = useState("");
+  const [isValid, setIsValid] = useState(false);
+
+  useEffect(() => {});
+  const tex = useRef();
+
+  const focusHandler = () => {
+    tex.current.focus();
+  };
+  const handleChange = (e) => {
+    setFirstName(e.target.value);
+    // console.log(e.target.value);
+    if (!isNaN(firstName)) {
+      setIsValid(true);
+    }
+  };
+
   return (
     <div>
       <div className="logo">
@@ -16,8 +34,12 @@ const Signup = () => {
         <Form.Row>
           <Form.Group as={Col} className="col-md-6">
             <Form.Control
+              ref={tex}
+              onClick={focusHandler}
+              onChange={handleChange}
+              value={firstName}
               type="text"
-              className="form-control"
+              className={isValid ? "error-css" : "form-control"}
               id="firstName"
               placeholder="First Name"
               required
