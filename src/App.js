@@ -3,7 +3,7 @@ import Sinup from "./components/Signup";
 
 function App() {
   return (
-    <div className="App">
+    <div className="content">
       <Sinup />
     </div>
   );

@@ -1,88 +1,56 @@
+* {
+  margin: 0;
+  font-family: sans-serif;
+  color: #333;
+}
+.content {
+  max-width: 500px;
+  margin: 40px auto;
+  margin-top: 20px;
+  padding: 20px;
+}
 .logo {
-  margin-top: 40px;
-  display: flex;
-  justify-content: center;
+  text-align: center;
 }
 .logo img {
-  width: 14%;
-  height: 7%;
+  width: 40%;
+  height: 10%;
+}
+.head {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
 }
 .head h3 {
-  margin-top: 40px;
-  margin-bottom: 40px;
-  font-size: 1.1em;
   font-weight: bold;
-  text-align: center;
+  font-size: 1.1rem;
 }
-.flex {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-left: 34%;
-}
-.fl-name {
-  display: flex;
-}
-.fl-name input {
-  display: flex;
-  width: 21%;
-  margin-bottom: 15px;
-  border: solid rgb(214, 214, 214) 1px;
+.form-control {
   border-radius: 10px;
-  height: 35px;
-  margin-right: 1.5%;
+  background-color: #f4f6f5;
 }
-.other input {
-  display: block;
-  margin-bottom: 15px;
-  width: 45%;
-  border: solid rgb(214, 214, 214) 1px;
+.btn.btn-primary {
+  border: white;
   border-radius: 10px;
-  height: 35px;
+  font-weight: 500;
 }
-.other button {
-  width: 47%;
-  height: 40px;
-  color: white;
-  border-radius: 10px;
-  border: solid rgb(255, 255, 255) 1px;
+.singup {
   background-color: #65b775;
-  font-size: 1.1em;
+  margin-bottom: 30px;
 }
-input {
-  text-align: start;
-  padding-left: 12px;
-  font-size: 1.1em;
-}
-.social div {
-  display: flex;
-  margin-top: 30px;
-  margin-left: 34%;
-  text-align: center;
-  flex-direction: column;
-  width: 31%;
-}
-.social .btn {
-  height: 40px;
-  margin-bottom: 15px;
-  font-size: 1.1em;
-  color: white;
-  border-radius: 10px;
-  border: solid rgb(255, 255, 255) 1px;
-}
-#google {
+
+.google {
   background-color: #dd4b39;
 }
-#facebook {
+.facebook {
   background-color: #3b5998;
 }
-#linkedin {
+.linkedin {
   background-color: #2e7cb6;
 }
 i {
-  vertical-align: middle;
+  color: white;
   float: left;
-  padding-left: 10px;
-  padding-right: 10px;
-  border-right: solid 1px;
+  padding: 4px 15px 0 5px;
+  font-size: 18px;
 }
