@@ -1,21 +1,58 @@
 import logo from "../../asset/company-logo.png";
 import { Form, Button, Col } from "react-bootstrap";
 import "../signup/signup.css";
-import { useState } from "react";
+import { useState, createRef, useRef, useEffect } from "react";
+import validator from "validator";
 
 const Signup = () => {
-  const [firstName, setFirstName] = useState("");
-  const [isValid, setIsValid] = useState(false);
+  const [state, setState] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    pass: "",
+    confirmPass: "",
+  });
+  const [isFirst, setIsFirst] = useState(false);
+  const [islast, setIslast] = useState(false);
+  const [isemail, setIsemail] = useState(false);
+  const [confirmPass, setconfirmPass] = useState(false);
+
+  useEffect(() => {
+    if (state.firstName.match(/^[a-zA-Z]*$/) == null) {
+      setIsFirst(true);
+    } else {
+      setIsFirst(false);
+    }
+    if (state.lastName.match(/^[a-zA-Z]*$/) == null) {
+      setIslast(true);
+    } else {
+      setIslast(false);
+    }
+    if (validator.isEmail(state.email)) {
+      setIsemail(false);
+    } else if (state.email !== "") {
+      setIsemail(true);
+      console.log("1");
+    }
+    if (state.pass == state.confirmPass) {
+      setconfirmPass(false);
+    } else {
+      setconfirmPass(true);
+    }
+  }, [state]);
 
   const handleChange = (e) => {
-    setFirstName(e.target.value);
+    const value = e.target.value;
+    setState({
+      ...state,
+      [e.target.id]: value,
+    });
+
     // console.log(e.target.value);
-    if (firstName.match(/^[a-zA-Z]*$/) == null) {
-      setIsValid(true);
-    } else {
-      setIsValid(false);
-    }
   };
+  console.log("first", state.firstName);
+  console.log("last", state.lastName);
+  console.log("email", state.email);
 
   return (
     <div>
@@ -31,9 +68,10 @@ const Signup = () => {
           <Form.Group as={Col} className="col-md-6">
             <Form.Control
               onChange={handleChange}
-              value={firstName}
+              value={state.firstName}
+              name="firstName"
               type="text"
-              className={isValid ? "error-css" : "form-control"}
+              className={isFirst ? "error-css" : "form-control"}
               id="firstName"
               placeholder="First Name"
               required
@@ -42,11 +80,14 @@ const Signup = () => {
 
           <Form.Group as={Col} className="col-md-6">
             <Form.Control
+              onChange={handleChange}
               type="text"
-              className="form-control"
+              name="lastName"
+              className={islast ? "error-css" : "form-control"}
               id="lastName"
               placeholder="Last Name"
               required
+              value={state.lastName}
             />
           </Form.Group>
         </Form.Row>
@@ -54,28 +95,34 @@ const Signup = () => {
         <Form.Row>
           <Form.Group as={Col} className="col-12">
             <Form.Control
+              onChange={handleChange}
               type="email"
-              className="form-control"
+              className={isemail ? "error-css" : "form-control"}
               id="email"
               placeholder="Email"
               required
+              value={state.email}
             />
           </Form.Group>
 
           <Form.Group className="col-12">
             <Form.Control
+              onChange={handleChange}
+              value={state.pass}
               type="password"
               className="form-control"
-              id="Password"
+              id="pass"
               placeholder="password"
               required
             />
           </Form.Group>
           <Form.Group className="col-12">
             <Form.Control
+              onChange={handleChange}
+              value={state.confirmPass}
               type="password"
-              className="form-control"
-              id="confirmPassword"
+              className={confirmPass ? "error-css" : "form-control"}
+              id="confirmPass"
               placeholder="Confirm Password"
               required
             />
