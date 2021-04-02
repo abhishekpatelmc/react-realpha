@@ -34,7 +34,7 @@ const Signup = () => {
       setIsemail(true);
       console.log("1");
     }
-    if (state.pass == state.confirmPass) {
+    if (state.pass === state.confirmPass) {
       setconfirmPass(false);
     } else {
       setconfirmPass(true);
